@@ -1,17 +1,45 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import Header from './components/header';
+import Item1 from './components/item1';
+import db_json from './db.json'
+import NewList from './components/new_list'
+import Footer from './components/footer'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+class App extends Component {
+        
+    
+    
+    state = {
+        news:db_json,
+        fo: "h"
+    }
+    
+    
+    render(){
+        
+        const {news} = this.state;
+       
+        return(
+            <header>
+                <div>
+                    <Header/>
+                    <NewList news={news}/>
+                    <div style={{ textAlign: 'center'}}> I'm in new_item </div>
+                </div>
+                <h3> News component</h3>
+                
+               <Item1/>
+               <Footer />
+               
+                
+
+            </header>
+
+        )
+
+    }
+}
+
+ReactDOM.render( <App/> , document.getElementById('root'))
